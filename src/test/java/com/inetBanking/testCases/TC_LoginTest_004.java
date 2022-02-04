@@ -25,7 +25,7 @@ public class TC_LoginTest_004 extends BaseClass{
 		lp.clickLogin();
 		Thread.sleep(2000);
 		System.out.println(driver.getTitle());
-		if(driver.getTitle().equals("Swag Lab")) {
+		if(driver.getTitle().equals("Swag Labs")) {
 			Assert.assertTrue(true);
 		}else
 		{
