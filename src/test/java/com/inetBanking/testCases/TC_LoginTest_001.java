@@ -22,10 +22,13 @@ public class TC_LoginTest_001 extends BaseClass{
 		LoginPage lp = new LoginPage(driver);
 		lp.setUserName(username);
 		logger.info("Enter username");
+		Thread.sleep(5000);
 		lp.setPassword(password);
 		logger.info("Enter password");
+		Thread.sleep(5000);
 		lp.clickLogin();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+		System.out.println("Vaidating text : " + driver.getTitle());
 		if(driver.getTitle().equals("Swag Lab")) {
 			Assert.assertTrue(true);
 		}else
