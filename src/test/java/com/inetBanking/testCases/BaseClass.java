@@ -24,7 +24,10 @@ import org.apache.log4j.Logger;
 
 public class BaseClass {
 	 
-	
+	/*
+	 * From git side settings-->developer settings-->Personal access tokens-->generate new token-->copy that token and use that token as password.
+	 * 
+	 */
 	//it contains all the common thing used in test case.
 	
 	//common variables
