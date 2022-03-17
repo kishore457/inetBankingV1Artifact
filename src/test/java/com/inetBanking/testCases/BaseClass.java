@@ -23,7 +23,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 
 public class BaseClass {
-	
+	 
 	
 	//it contains all the common thing used in test case.
 	
