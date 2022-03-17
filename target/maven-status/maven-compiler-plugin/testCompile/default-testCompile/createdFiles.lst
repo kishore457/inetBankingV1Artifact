@@ -1,5 +1,6 @@
 com\inetBanking\testCases\TC_LoginTest_001.class
 com\inetBanking\utilities\ReadConfig.class
+com\inetBanking\testCases\TC_LoginTest_004.class
 com\inetBanking\utilities\Reporting.class
 com\inetBanking\pageObjects\ProductsPage.class
 com\inetBanking\testCases\TC_AddProductsTest_003.class

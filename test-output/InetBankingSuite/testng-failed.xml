@@ -7,6 +7,27 @@
   <test thread-count="5" name="BankingApp Test(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
+      <class name="com.inetBanking.testCases.TC_AddProductsTest_003">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="addProductsToCart"/>
+        </methods>
+      </class> <!-- com.inetBanking.testCases.TC_AddProductsTest_003 -->
+      <class name="com.inetBanking.testCases.TC_LoginDDT_002">
+        <methods>
+          <include name="loginDDT"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.inetBanking.testCases.TC_LoginDDT_002 -->
+      <class name="com.inetBanking.testCases.TC_LoginTest_004">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="loginTest"/>
+        </methods>
+      </class> <!-- com.inetBanking.testCases.TC_LoginTest_004 -->
       <class name="com.inetBanking.testCases.TC_LoginTest_001">
         <methods>
           <include name="setUp"/>
@@ -14,13 +35,6 @@
           <include name="tearDown"/>
         </methods>
       </class> <!-- com.inetBanking.testCases.TC_LoginTest_001 -->
-      <class name="com.inetBanking.testCases.TC_LoginDDT_002">
-        <methods>
-          <include name="loginDDT" invocation-numbers="1"/>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- com.inetBanking.testCases.TC_LoginDDT_002 -->
     </classes>
   </test> <!-- BankingApp Test(failed) -->
 </suite> <!-- Failed suite [InetBankingSuite] -->
