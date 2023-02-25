@@ -109,6 +109,12 @@
 						<suiteXmlFiles>
 							<suiteXmlFile>./TestNG.xml</suiteXmlFile>
 						</suiteXmlFiles>
+						
+						<systemPropertyVariables>
+							
+							<runinbrowserDNM>${browser}</runinbrowserDNM>
+							
+						</systemPropertyVariables>
 					</configuration>
 				</plugin>
 			</plugins>
