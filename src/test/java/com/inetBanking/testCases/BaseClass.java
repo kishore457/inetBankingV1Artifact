@@ -1,12 +1,13 @@
 package com.inetBanking.testCases;
 
-
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -23,77 +24,86 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 
 public class BaseClass {
-	 
+
 	/*
-	 * From git side settings-->developer settings-->Personal access tokens-->generate new token-->copy that token and use that token as password.
+	 * From git side settings-->developer settings-->Personal access
+	 * tokens-->generate new token-->copy that token and use that token as password.
 	 * 
 	 */
-	//it contains all the common thing used in test case.
-	
-	//common variables
-	
+	// it contains all the common thing used in test case.
+
+	// common variables
+
 	ReadConfig readconfiguration = new ReadConfig();
 	public String baseURL = readconfiguration.getApplicationURL();
 	public String username = readconfiguration.getUsername();
-	public String password =readconfiguration.getPassword();
+	public String password = readconfiguration.getPassword();
 	public static WebDriver driver;
 	public static Logger logger;
-	
-	@Parameters({"browser"})
+
+	@Parameters({ "browser" })
 	@BeforeClass
 	public void setUp(String browserToLaunch) {
-		//3.System.setProperty("webdriver.chrome.driver", readconfiguration.getChromepath());
-		//2.System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe"
-	//1.System.getProperty("user.dir") = C:\\Users\\Kiran G\\Desktop\\Kishore\\inetBankingV1Artifact
-		
+		// 3.System.setProperty("webdriver.chrome.driver",
+		// readconfiguration.getChromepath());
+		// 2.System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe"
+		// 1.System.getProperty("user.dir") = C:\\Users\\Kiran
+		// G\\Desktop\\Kishore\\inetBankingV1Artifact
+
 		logger = Logger.getLogger("TC_LoginTest_001");
 		PropertyConfigurator.configure("log4j.properties");
-		
-		if(browserToLaunch.equals("chrome")){
+
+		if (browserToLaunch.equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", readconfiguration.getChromepath());
-			//readconfiguration.getChromepath()
+			// readconfiguration.getChromepath()
 			driver = new ChromeDriver();
-		}else if(browserToLaunch.equals("edge")) {
+			//To ensure the browser is launched during jenkins run
+			ChromeOptions options = new ChromeOptions();
+			options.setHeadless(false);
+		} else if (browserToLaunch.equals("edge")) {
 			System.setProperty("webdriver.edge.driver", readconfiguration.getEdgepath());
 			driver = new EdgeDriver();
+			//To ensure the browser is launched during jenkins run
+			EdgeOptions options = new EdgeOptions();
+			options.setHeadless(false);
+			
 		}
-		
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(baseURL);
-		
+
 	}
-	
+
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}
-	
+
 	public void captureScreen(WebDriver driver, String tname) throws IOException {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		File target = new File(System.getProperty("user.dir")+"/Screenshots/"+tname+".png");
+		File target = new File(System.getProperty("user.dir") + "/Screenshots/" + tname + ".png");
 		FileUtils.copyFile(source, target);
 		System.out.println("Screenshot taken");
 	}
-	
-	//generate random email
-		public String randomString() {
-			
-			String generatedString = RandomStringUtils.randomAlphabetic(10);//create a string with 10 characters.
-			return generatedString;
-		}
-		//generate random num
+
+	// generate random email
+	public String randomString() {
+
+		String generatedString = RandomStringUtils.randomAlphabetic(10);// create a string with 10 characters.
+		return generatedString;
+	}
+
+	// generate random num
 	public String randomNum() {
-			String generatedNum = RandomStringUtils.randomNumeric(5);//create a int with 5 characters.
-			return generatedNum;
-			
-		}
-		
+		String generatedNum = RandomStringUtils.randomNumeric(5);// create a int with 5 characters.
+		return generatedNum;
+
+	}
 
 }
 
-/*Prerequisites of extent reports : 
- * 1. Jar files
- * 2. extent-config.xml file
- * 3. listner (Reporting.java) - > utility file
- * */
+/*
+ * Prerequisites of extent reports : 1. Jar files 2. extent-config.xml file 3.
+ * listner (Reporting.java) - > utility file
+ */
