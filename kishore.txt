@@ -1,1 +1,2 @@
-updated text
+command to run the test cases in jenkins : clean test -P QA -Dbrowser=$browser_choice -DTestRunType=$test_type
+clean test -P QA -Dbrowser=chrome -DTestRunType=Smoke
